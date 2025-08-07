@@ -1,0 +1,165 @@
+.header-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.header-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.search-box {
+    width: 300px;
+    padding: 5px;
+}
+
+.nav-links a {
+    margin-left: 15px;
+    text-decoration: none;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.tabs .tab {
+    margin-right: 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.item-list {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.item {
+    width: 150px;
+    text-align: center;
+}
+
+.item-image {
+    width: 100%;
+    height: auto;
+    background-color: #eee;
+}
+
+.item-name {
+    margin-top: 10px;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.search-box {
+    flex-grow: 1;
+    margin: 0 20px;
+    padding: 5px;
+}
+
+.header-menu a {
+    margin-left: 15px;
+    text-decoration: none;
+}
+
+.tab-menu {
+    display: flex;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+
+.tab {
+    padding: 10px 20px;
+    font-size: 14px;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    color: #333;
+}
+
+.tab.active {
+    color: red;
+    border-color: red;
+    font-weight: bold;
+}
+
+.item-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: start;
+    margin-top: 20px;
+
+}
+
+.item {
+    width: 150px;
+    text-align: center;
+}
+
+.item-image {
+    background-color: #ccc;
+    height: 150px;
+    line-height: 150px;
+    font-weight: bold;
+}
+
+.item-name {
+    margin-top: 10px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+main.container {
+    min-height: 100vh;
+    padding-top: 20px;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.item-card {
+    width: 200px;
+    max-width: 100%;
+    padding: 10px;
+}
+
+.fixed-image {
+    width: 200px !important;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.img-fluid {
+    width: auto !important;
+    max-width: 200px !important;
+    height: auto !important;
+}

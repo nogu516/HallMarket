@@ -2,7 +2,18 @@
 
 namespace App\Http\Controllers;
 
-abstract class Controller
+/**
+ * @method void middleware(string|array $middleware, array $options = [])
+ */
+
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Routing\Controller as BaseController;
+
+class Controller extends BaseController
 {
-    //
+    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 }
+
+
