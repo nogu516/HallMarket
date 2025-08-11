@@ -70,4 +70,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(\App\Models\Purchase::class);
     }
+
+    public function mylistProducts()
+    {
+        return $this->belongsToMany(Product::class, 'mylist', 'user_id', 'product_id')->withTimestamps();
+    }
 }

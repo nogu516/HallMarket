@@ -2,7 +2,7 @@
 
 Docker ビルド
 
-・https://github.com/nogu516/CoachMarket.git
+・https://github.com/nogu516/HallMarket.git
 
 ・docker-compose up -d --build
 
@@ -22,9 +22,9 @@ Laravel 環境構築
 
 開発環境
 
-・お問い合わせ画面： http://localhost
+・ログイン画面　　　　： http://localhost
 
-・ユーザー登録　　： http://localhost/register
+・ユーザー登録画面　　： http://localhost/register
 
 ・phpMyAdmin : http://localhost:8080
 
@@ -33,5 +33,3 @@ Laravel 環境構築
 
 ER 図
 ・新模擬案件 1 のテーブル仕様書
-
-・VScode 内の src/docs 内参照

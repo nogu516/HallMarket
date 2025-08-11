@@ -23,6 +23,9 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/', [ProductController::class, 'index'])->name('home');
+
+Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
+
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
 
 Route::middleware(['web', 'auth'])->group(function () {
@@ -38,13 +41,11 @@ Route::post('/products/{product}/purchase', [ProductController::class, 'purchase
 
 Route::get('/purchase/{product_id}', [PurchaseController::class, 'show'])->name('purchase.show');
 
+Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
+
 Route::post('/purchase', [PurchaseController::class, 'store'])->name('purchase.store');
 
 Route::middleware(['auth'])->group(function () {
-
-    Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
-
-    Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
 
     Route::post('/products/{id}/like', [LikeController::class, 'toggleLike'])->name('products.like');
 
@@ -82,3 +83,5 @@ Route::post('/address/update', [ProfileController::class, 'updateAddress'])->nam
 Route::get('/category/{category}', [CategoryController::class, 'show'])->name('category.show');
 
 Route::get('/search', [ProductController::class, 'search'])->name('search');
+
+Route::get('/recommend', [App\Http\Controllers\ProductController::class, 'recommend'])->name('products.recommend');

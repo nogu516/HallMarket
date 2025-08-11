@@ -17,8 +17,10 @@
     <div id="recommend" class="tab-content active">
         @forelse ($recommendedProducts as $item)
         <div class="item-card border p-3 rounded shadow-sm" style="width: 200px;">
-            <img src="{{ asset('storage/' . $item->image) }}" class="fixed-image" alt="{{ $item->name }}" style="width: 200px !important; height: auto; object-fit: cover; display: block;">
-            <div>{{ $item->name }}（出品者：{{ $item->user->name }}）</div>
+            <a href="{{ route('products.show', $item->id) }}" style="text-decoration: none; color: inherit;">
+                <img src="{{ asset('storage/' . $item->image) }}" class="fixed-image" alt="{{ $item->name }}" style="width: 200px !important; height: auto; object-fit: cover; display: block;">
+                <div>{{ $item->name }}（出品者：{{ $item->user->name }}）</div>
+            </a>
         </div>
         @empty
         <p>おすすめの商品はありません。</p>
@@ -32,9 +34,6 @@
             <div class="item-card border p-3 rounded shadow-sm" style="width: 200px;">
                 <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->name }}" class="img-fluid mb-2">
                 <div>{{ $item->name }}（出品者：{{ $item->user->name }}）</div>
-                <!-- @if (!$item->is_sold) -->
-                <!-- <span class="btn btn-sm btn-secondary mt-2 disabled">Sold</span> -->
-                <!-- @endif -->
                 <a href="{{ route('products.show', $item->id) }}" class="btn btn-sm btn-outline-primary mt-2">{{ $item->name }}</a>
             </div>
             @empty

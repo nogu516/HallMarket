@@ -13,18 +13,19 @@ class ProductController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $products = Product::latest()->get();
+
+        $recommendedProducts = Product::with('user')->orderBy('created_at', 'desc')->take(8)->get();
+
+        // 他の処理
+        $products = Product::with(['user', 'purchases'])->latest()->paginate(12);
 
         if ($user) {
-            $mylistProducts = $user->likedProducts()->get();
+            $mylistProducts = $user->likedProducts()->with('user')->get();
+            $likedProductIds = $user->likedProducts->pluck('id')->toArray();
         } else {
             $mylistProducts = collect();
+            $likedProductIds = [];
         }
-
-        $products = Product::with(['user', 'purchases'])->latest()->paginate(12);
-        $recommendedProducts = Product::where('is_recommended', true)->get();
-
-        $products = Product::latest()->get();
 
         $likedProductIds = auth()->check()
             ? auth()->user()->likedProducts->pluck('id')->toArray()
@@ -91,6 +92,14 @@ class ProductController extends Controller
     public function recommended()
     {
         return view('products.index', ['products' => collect()]);
+    }
+
+    public function recommend()
+    {
+        // 例：おすすめ商品を最新順で8件取得
+        $recommendedProducts = Product::orderBy('created_at', 'desc')->take(8)->get();
+
+        return view('products.recommend', compact('recommendedProducts'));
     }
 
     public function purchase(Request $request, Product $product)
