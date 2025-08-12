@@ -26,7 +26,7 @@ Laravel 環境構築
 
 ・ユーザー登録画面　　： http://localhost/register
 
-・phpMyAdmin : http://localhost:8080
+・phpMyAdmin         : http://localhost:8080
 
 使用技術 ・PHP :8.2.28 ・Laravel:11.0 ・MySQL :8.0.26 ・nginx :1.21.1 ・query
 
