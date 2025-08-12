@@ -175,8 +175,18 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'name' => [
+            'required' => 'お名前を入力してください',
+        ],
+        'email' => [
+            'required' => 'メールアドレスを入力してください',
+            'email' => '正しいメールアドレス形式で入力してください',
+            'unique' => 'このメールアドレスは既に使用されています',
+        ],
+        'password' => [
+            'required' => 'パスワードを入力してください',
+            'min' => 'パスワードは:min文字以上で入力してください',
+            'confirmed' => 'パスワードと一致しません',
         ],
     ],
 

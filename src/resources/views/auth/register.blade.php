@@ -10,7 +10,7 @@
 <div class="register-container">
     <h2 class="register-title">会員登録</h2>
 
-    <form method="POST" action="{{ route('register') }}">
+    <form action="{{ route('authors.store') }}" method="POST">
         @csrf
 
         <div class="form-group">

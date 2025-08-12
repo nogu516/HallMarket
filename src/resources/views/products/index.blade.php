@@ -15,55 +15,57 @@
 
     {{-- タブ：おすすめ --}}
     <div id="recommend" class="tab-content active">
-        @forelse ($recommendedProducts as $item)
-        <div class="item-card border p-3 rounded shadow-sm" style="width: 200px;">
-            <a href="{{ route('products.show', $item->id) }}" style="text-decoration: none; color: inherit;">
-                <img src="{{ asset('storage/' . $item->image) }}" class="fixed-image" alt="{{ $item->name }}" style="width: 200px !important; height: auto; object-fit: cover; display: block;">
-                <div>{{ $item->name }}（出品者：{{ $item->user->name }}）</div>
-            </a>
-        </div>
-        @empty
-        <p>おすすめの商品はありません。</p>
-        @endforelse
-    </div>
-
-    {{-- タブ：マイリスト --}}
-    <div id="mylist" class="tab-content">
         <div class="item-list">
-            @forelse ($mylistProducts as $item)
+            @forelse ($recommendedProducts as $item)
             <div class="item-card border p-3 rounded shadow-sm" style="width: 200px;">
-                <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->name }}" class="img-fluid mb-2">
-                <div>{{ $item->name }}（出品者：{{ $item->user->name }}）</div>
-                <a href="{{ route('products.show', $item->id) }}" class="btn btn-sm btn-outline-primary mt-2">{{ $item->name }}</a>
+                <a href="{{ route('products.show', $item->id) }}" style="text-decoration: none; color: inherit;">
+                    <img src="{{ asset('storage/' . $item->image) }}" class="fixed-image" alt="{{ $item->name }}" style="width: 200px !important; height: auto; object-fit: cover; display: block;">
+                    <div>{{ $item->name }}（出品者：{{ $item->user->name }}）</div>
+                </a>
             </div>
             @empty
-            <p>マイリストの商品はありません。</p>
+            <p>おすすめの商品はありません。</p>
             @endforelse
         </div>
     </div>
-    @endsection
 
-    @section('scripts')
-    <script>
-        const tabs = document.querySelectorAll('.tab');
-        const contents = document.querySelectorAll('.tab-content');
+        {{-- タブ：マイリスト --}}
+        <div id="mylist" class="tab-content">
+            <div class="item-list">
+                @forelse ($mylistProducts as $item)
+                <div class="item-card border p-3 rounded shadow-sm" style="width: 200px;">
+                    <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->name }}" class="img-fluid mb-2">
+                    <div>{{ $item->name }}（出品者：{{ $item->user->name }}）</div>
+                    <a href="{{ route('products.show', $item->id) }}" class="btn btn-sm btn-outline-primary mt-2">{{ $item->name }}</a>
+                </div>
+                @empty
+                <p>マイリストの商品はありません。</p>
+                @endforelse
+            </div>
+        </div>
+        @endsection
 
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                tabs.forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
+        @section('scripts')
+        <script>
+            const tabs = document.querySelectorAll('.tab');
+            const contents = document.querySelectorAll('.tab-content');
 
-                const targetId = tab.getAttribute('data-tab');
-                contents.forEach(c => c.classList.remove('active'));
-                document.getElementById(targetId).classList.add('active');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+
+                    const targetId = tab.getAttribute('data-tab');
+                    contents.forEach(c => c.classList.remove('active'));
+                    document.getElementById(targetId).classList.add('active');
+                });
+
+                tab.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        tab.click();
+                    }
+                });
             });
+        </script>
 
-            tab.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    tab.click();
-                }
-            });
-        });
-    </script>
-
-    @endsection
+        @endsection

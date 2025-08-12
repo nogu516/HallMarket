@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\AuthorController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -85,3 +86,5 @@ Route::get('/category/{category}', [CategoryController::class, 'show'])->name('c
 Route::get('/search', [ProductController::class, 'search'])->name('search');
 
 Route::get('/recommend', [App\Http\Controllers\ProductController::class, 'recommend'])->name('products.recommend');
+
+Route::post('/authors', [AuthorController::class, 'store'])->name('authors.store');
