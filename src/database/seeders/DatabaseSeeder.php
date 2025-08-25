@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Database\Seeders\CategorySeeder;
+use Database\Seeders\ProductsTableSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,6 +17,10 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             CategorySeeder::class,
+        ]);
+
+        $this->call([
+            ProductsTableSeeder::class,
         ]);
     }
 }
